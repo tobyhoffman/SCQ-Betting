@@ -28,14 +28,29 @@ table6[['Team', '2023']].to_excel("asm.xlsx")
 
 # Store the teams stats in Excel files
 
-teams = pd.read_excel('oe.xlsx', usecols='C')
-teams.to_excel('teams.xlsx')
+def offensiveEfficiency(team):
+    oetable = pd.read_excel('oe.xlsx')
+    row_index = oetable.index[oetable['Team'] == team].tolist()
 
-# initialize a list of team names
+    return (oetable['2023'].iloc[row_index[0]])
 
-test = pd.read_excel('asm.xlsx')
 
-row_index = test.index[test['Team'] == 'Denver'].tolist()
-print(row_index)
+def defensiveEfficiency(team):
+    detable = pd.read_excel('de.xlsx')
+    row_index = detable.index[detable['Team'] == team].tolist()
 
-print(test['2023'].iloc[3])
+    return (detable['2023'].iloc[row_index[0]])
+
+def project(team1, team2):
+
+    if (defensiveEfficiency(team1) + offensiveEfficiency(team1)) > ((defensiveEfficiency(team2) + offensiveEfficiency(team2))):
+        return team1
+    else:
+        return team2
+
+
+print(project('Denver','Indiana'))
+
+
+
+
