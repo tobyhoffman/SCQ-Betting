@@ -41,6 +41,31 @@ def defensiveEfficiency(team):
 
     return (detable['2023'].iloc[row_index[0]])
 
+def pointsPerGame(team):
+    ppgtable = pd.read_excel('ppg.xlsx')
+    row_index = ppgtable.index[ppgtable['Team'] == team].tolist()
+
+    return (ppgtable['2023'].iloc[row_index[0]])
+
+def trueShootingPercentage(team):
+    tsptable = pd.read_excel('ts.xlsx')
+    row_index = tsptable.index[tsptable['Team'] == team].tolist()
+
+    return (tsptable['2023'].iloc[row_index[0]])
+
+def turnoverPercentage(team):
+    totable = pd.read_excel('to.xlsx')
+    row_index = totable.index[totable['Team'] == team].tolist()
+
+    return (totable['2023'].iloc[row_index[0]])
+
+def averageScoringMargin(team):
+    asmtable = pd.read_excel('asm.xlsx')
+    row_index = asmtable.index[asmtable['Team'] == team].tolist()
+
+    return (asmtable['2023'].iloc[row_index[0]])
+
+
 def project(team1, team2):
 
     if (defensiveEfficiency(team1) + offensiveEfficiency(team1)) > ((defensiveEfficiency(team2) + offensiveEfficiency(team2))):
@@ -49,7 +74,9 @@ def project(team1, team2):
         return team2
 
 
-print(project('Denver','Indiana'))
+if __name__ == '__main__':
+
+    print(project('Denver','Indiana'))
 
 
 
