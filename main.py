@@ -7,6 +7,8 @@ url4 = "https://www.teamrankings.com/nba/stat/points-per-game"
 url5 = "https://www.teamrankings.com/nba/stat/defensive-efficiency"
 url6 = "https://www.teamrankings.com/nba/stat/average-scoring-margin"
 
+masterUrl = "https://stathead.com/tiny/ELmeC"
+
 # store team stats as strings
 
 table = pd.read_html(url)[0]
@@ -15,6 +17,8 @@ table3 = pd.read_html(url3)[0]
 table4 = pd.read_html(url4)[0]
 table5 = pd.read_html(url5)[0]
 table6 = pd.read_html(url6)[0]
+
+mastertable = pd.read_html(masterUrl)[0]
 
 #parse tables from html - stored as var
 
@@ -26,6 +30,7 @@ table4[['Team', '2023']].to_excel("ppg.xlsx")
 table5[['Team', '2023']].to_excel("de.xlsx")
 table6[['Team', '2023']].to_excel("asm.xlsx")
 
+mastertable.to_excel("MasterStats.xlsx")
 # Store the teams stats in Excel files
 
 def offensiveEfficiency(team):
