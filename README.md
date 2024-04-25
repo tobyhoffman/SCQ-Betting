@@ -55,7 +55,7 @@ Returns: The free throw percentage ('FT%') of the specified team as a float. Thi
 Parameter: team (str) - The name of the NBA team.
 Returns: The offensive rebound percentage ('ORB%') of the specified team as a float. This statistic measures the percentage of available offensive rebounds a team captures.
 
-# defensiveReboundPercentage(team)
+## defensiveReboundPercentage(team)
 Parameter: team (str) - The name of the NBA team.
 Returns: The defensive rebound percentage ('DRB%') of the specified team as a float. This statistic measures the percentage of available defensive rebounds a team captures.
 
