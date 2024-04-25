@@ -93,13 +93,13 @@ def offensiveReboundPercentage(team):
     orptable = pd.read_excel('MasterStats.xlsx')
     row_index = orptable.index[orptable['Team'] == team].tolist()
 
-    return (orptable['ORB%']).iloc[0]
+    return (orptable['ORB%']).iloc[row_index[0]]
 
 def defensiveReboundPercentage(team):
     drptable = pd.read_excel('MasterStats.xlsx')
     row_index = drptable.index[drptable['Team'] == team].tolist()
 
-    return (drptable['DRB%']).iloc[0]
+    return (drptable['DRB%']).iloc[row_index[0]]
 
 
 def scrapeNBAOdds():     
