@@ -10,9 +10,7 @@ mastertable = pd.read_html(masterUrl)[0]
 #parse tables from html - stored as var
 
 mastertable.to_excel("MasterStats.xlsx")
-
 mastertable = pd.read_excel("MasterStats.xlsx", header=1)
-
 mastertable.to_excel("MasterStats.xlsx")
 
 # Store the teams stats in Excel file
