@@ -7,6 +7,9 @@ All stat definitions can be found at the link above
 
 # Function Definitions
 
+##getTodaysGames()
+Returns: A list of Game objects for the day's games based on the betting data stored in an Excel file. If the file is not found, the function returns an empty list.
+
 ## offensiveRating(team)
 Parameter: team (str) - The name of the NBA team.
 Returns: The offensive rating ('ORtg') of the specified team as a float. The offensive rating is a measure of a team's efficiency at scoring points.
