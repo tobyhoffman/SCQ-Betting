@@ -7,7 +7,7 @@ All stat definitions can be found at the link above
 
 # Function Definitions
 
-##getTodaysGames()
+## getTodaysGames()
 Returns: A list of Game objects for the day's games based on the betting data stored in an Excel file. If the file is not found, the function returns an empty list.
 
 ## offensiveRating(team)
