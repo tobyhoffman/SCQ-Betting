@@ -1,7 +1,7 @@
 
 import pandas as pd
 
-masterUrl = "https://stathead.com/tiny/ELmeC"
+masterUrl = "https://stathead.com/tiny/i2XKf"
 
 # store team stats as strings
 
@@ -52,6 +52,48 @@ def marginOfVictory(team):
 
     return (asmtable['MOV'].iloc[row_index[0]])
 
+def winPercentage(team):
+    wpmtable = pd.read_excel('MasterStats.xlsx')
+    row_index = wpmtable.index[wpmtable['Team'] == team].tolist()
+
+    return (wpmtable['W/L%'].iloc[row_index[0]])
+
+def strengthOfSchedule(team):
+    stptable = pd.read_excel('MasterStats.xlsx')
+    row_index = stptable.index[stptable['Team'] == team].tolist()
+
+    return (stptable['SOS']).iloc[row_index[0]]
+
+def simpleRating(team):
+    rattable = pd.read_excel('MasterStats.xlsx')
+    row_index = rattable.index[rattable['Team'] == team].tolist()
+
+    return (rattable['SRS']).iloc[row_index[0]]
+
+def freeThrowAttemptRate(team):
+    ftrttable = pd.read_excel('MasterStats.xlsx')
+    row_index = ftrttable.index[ftrttable['Team'] == team].tolist()
+
+    return (ftrttable['FTr']).iloc[row_index[0]]
+
+def freeThrowPercentage(team):
+    ftptable = pd.read_excel('MasterStats.xlsx')
+    row_index = ftptable.index[ftptable['Team'] == team].tolist()
+
+    return (ftptable['FT%']).iloc[row_index[0]]
+
+def offensiveReboundPercentage(team):
+    orptable = pd.read_excel('MasterStats.xlsx')
+    row_index = orptable.index[orptable['Team'] == team].tolist()
+
+    return (orptable['ORB%']).iloc[0]
+
+def defensiveReboundPercentage(team):
+    drptable = pd.read_excel('MasterStats.xlsx')
+    row_index = drptable.index[drptable['Team'] == team].tolist()
+
+    return (drptable['ORB%']).iloc[0]
+
 
 def project(team1, team2):
 
@@ -64,3 +106,11 @@ def project(team1, team2):
 if __name__ == '__main__':
 
     print(project('DAL','IND'))
+    print(offensiveRating('DAL'))
+    print(defensiveRating('DAL'))
+    print(pointsPerGame('DAL'))
+    print(freeThrowAttemptRate('DAL'))
+    print(winPercentage('DAL'))
+    print(marginOfVictory('DAL'))
+    print(defensiveRating('DAL'))
+    print(offensiveRating('DAL'))
