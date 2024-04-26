@@ -1,0 +1,7 @@
+__pycache__
+lango_cli.config.json
+.env
+.env.local
+# Testing
+.mypy_cache
+dist

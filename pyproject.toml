@@ -1,0 +1,35 @@
+[tool.poetry]
+name = "scq_betting"
+version = "0.1.0"
+description = "Toby add this here"
+authors = ["Toby Hoffman <toby_idk_your_emmail>"]
+license = "MIT"
+readme = "README.md"
+homepage = "https://github.com/tobyhoffman/SCQ-Betting/blob/main/README.md"
+repository = "https://github.com/tobyhoffman/SCQ-Betting"
+documentation = "https://github.com/tobyhoffman/SCQ-Betting/blob/main/README.md"
+
+[tool.poetry.dependencies]
+python = "<4.0,>=3.9.0"
+pandas = "^2.2.2"
+selenium = "^4.2.0"
+
+[build-system]
+requires = ["poetry>=1.8.0"]
+
+[tool.poetry.scripts]
+run = "scq_betting.main:main"
+
+[tool.poetry.group.lint]
+optional = true
+
+[tool.poetry.group.lint.dependencies]
+ruff = "^0.1.5"
+
+[tool.ruff]
+select = [
+  "E", # pycodestyle
+  "F", # pyflakes
+  "I", # isort
+]
+ignore = ["E501"]
