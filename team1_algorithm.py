@@ -19,10 +19,10 @@ class Algorithm:
             team1 = game.team1
             team2 = game.team2
             
-            if (offensiveEfficiency(team1) > offensiveEfficiency(team2) and defensiveEfficiency(team1) > defensiveEfficiency(team2)):
+            if (offensiveRating(team1) > offensiveRating(team2) and defensiveRating(team1) > defensiveRating(team2)):
                 bets.append(Bet(team1, 2))  # bet a fixed wager of 2 units on team1
             
-            elif (offensiveEfficiency(team2) > offensiveEfficiency(team1) and defensiveEfficiency(team2) > defensiveEfficiency(team1)):
+            elif (offensiveRating(team2) > offensiveRating(team1) and defensiveRating(team2) > defensiveRating(team1)):
                 bets.append(Bet(team2, 2)) #bet a fixed wager of 2 units on team2
 
         
