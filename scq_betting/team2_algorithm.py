@@ -1,6 +1,6 @@
-from scq_betting.bet import Bet
-from scq_betting.data import *
-from scq_betting.game import Game
+from bet import Bet
+from data import *
+from game import Game
 
 
 class Algorithm:

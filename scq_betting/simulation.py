@@ -4,6 +4,8 @@ import os
 import pandas as pd
 from bet import Bet
 from datetime import datetime
+import importlib.util
+
 
 
 class Simulation:
@@ -15,7 +17,7 @@ class Simulation:
         # Get today's date
         today_date = datetime.today().strftime('%Y-%m-%d')
         # File name for storing bets
-        bets_file_name = f"bets_{today_date}.xlsx"
+        bets_file_name = f"../__data__/bets_{today_date}.xlsx"
 
         # Iterate through algorithm files, create objects, and store list of bets
         all_bets = []
@@ -23,7 +25,6 @@ class Simulation:
             # Extract team name from file name
             team_name = os.path.splitext(os.path.basename(algo_file))[
                 0].split('_')[0]
-            print(team_name)
             # Import algorithm class and create object
             algo_module = __import__(algo_file.replace('.py', ''))
             algo_class = getattr(algo_module, 'Algorithm')
@@ -39,6 +40,7 @@ class Simulation:
 
         print(f"All bets stored in {bets_file_name}")
         return all_bets
+
 
     def verifyBets(self, max_wager):
         # Get today's date

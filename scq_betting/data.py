@@ -8,7 +8,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 
-from scq_betting.game import Game
+from game import Game
 
 masterUrl = "https://stathead.com/tiny/i2XKf"
 
@@ -161,7 +161,7 @@ def scrapeNBAOdds():
     df = pd.DataFrame(export_data, columns=columns)
 
     today_date = datetime.today().strftime("%Y-%m-%d")
-    file_name = f"betting_data_{today_date}.xlsx"
+    file_name = f"../__data__/betting_data_{today_date}.xlsx"
     df.to_excel(file_name, index=False)
     print(f"Data exported to {file_name}")
 
@@ -170,7 +170,7 @@ def scrapeNBAOdds():
 
 def getTodaysGames():
     today_date = datetime.today().strftime("%Y-%m-%d")
-    file_name = f"betting_data_{today_date}.xlsx"
+    file_name = f"../__data__/betting_data_{today_date}.xlsx"
 
     try:
         # Check if the Excel file exists
