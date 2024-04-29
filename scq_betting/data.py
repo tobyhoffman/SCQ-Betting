@@ -190,3 +190,50 @@ def getTodaysGames():
     except FileNotFoundError:
         # If the file does not exist, call scrapeNBAOdds()
         print(f"Excel file {file_name} not found. Need to scrape NBA odds")
+
+def getYesterdayResults():     
+    export_data = []
+
+    # chrome_options = Options()
+    # chrome_options.add_argument("--disable-gpu")
+    s = Service('/usr/local/bin/chromedriver') 
+
+    driver = webdriver.Chrome(service=s)
+    url = 'https://sports.yahoo.com/nba/scoreboard/?confId=&schedState=2&dateRange=2014-02-10'
+    driver.get(url)
+
+    table = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, "[id*=scoreboard-group-2]")))
+    all_lists = table.find_elements(By.TAG_NAME, "ul")
+
+    if(len(all_lists) == 0):
+        print("No games found on this date")
+        return pd.DataFrame()
+    
+    list = all_lists[0]
+    games = list.find_elements(By.TAG_NAME, "li")
+    for game in games:
+        data = game.find_elements(By.TAG_NAME, "li")
+
+        for i in range(0, len(data), 2):
+            # print(data[i].text)
+            team1_first = data[i].find_element(By.CSS_SELECTOR, 'span[data-tst="first-name"]').text
+            team1_last = data[i].find_element(By.CSS_SELECTOR, 'span[data-tst="last-name"]').text
+            team1_score = data[i].find_element(By.CSS_SELECTOR, 'div[class*="Whs(nw)"]').text
+
+            team2_first = data[i+1].find_element(By.CSS_SELECTOR, 'span[data-tst="first-name"]').text
+            team2_last = data[i+1].find_element(By.CSS_SELECTOR, 'span[data-tst="last-name"]').text
+            team2_score = data[i+1].find_element(By.CSS_SELECTOR, 'div[class*="Whs(nw)"]').text
+
+            export_data.append([team1_first, team1_last, team1_score, team2_first, team2_last, team2_score])
+
+            # print (team1_first)
+            # print (team1_last)
+            # print(team1_score)
+
+
+
+    columns = ["Team 1 First", "Team 1 Last", "Team 1 Score", "Team 2 First", "Team 2 Last", "Team 2 Score"]
+    df = pd.DataFrame(export_data, columns=columns)
+
+    return df
+        
