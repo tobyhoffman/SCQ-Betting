@@ -12,6 +12,12 @@ class Bet:
 
 """
 Team Names must be of the format:
-
+BOS
+OKC
+LAL
+NYK
+ORL
+PHI
+...
 
 """
