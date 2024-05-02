@@ -113,7 +113,11 @@ def defensiveReboundPercentage(team):
 
     return (drptable["DRB%"]).iloc[row_index[0]]
 
+def pace(team):
+    pacetable = pd.read_excel("../__data__/MasterStats.xlsx")
+    row_index = pacetable.index[pacetable["Team"] == team].tolist()
 
+    return (pacetable["Pace"]).iloc[row_index[0]]
 def getTodaysGames():
 
     file_name = f"../__data__/betting_data.xlsx"
