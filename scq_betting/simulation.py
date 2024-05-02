@@ -1,20 +1,16 @@
-# simulation.py
-
 import os
 import pandas as pd
 from bet import Bet
 from datetime import datetime
 
 
-
 class Simulation:
     def __init__(self, algorithm_files, simulation_file, max_wager):
         self.algorithm_files = algorithm_files
-        self.simulation_file = simulation_file  
+        self.simulation_file = simulation_file
         self.max_wager = max_wager
         if not os.path.exists(simulation_file):
             self.initializeSimulationFile()
-
 
     def initializeSimulationFile(self):
         # Get today's date
@@ -37,14 +33,14 @@ class Simulation:
         if b.wager > self.max_wager:
             print("Invalid wager:", b)
             return False
-        
+
         today_date = datetime.today().strftime('%Y-%m-%d')
-        data_file = f"../__data__/betting_data_{today_date}.xlsx"
+        data_file = f"../__data__/betting_data.xlsx"
 
         try:
             df = pd.read_excel(data_file)
             todays_teams = pd.concat([df["Team 1"], df["Team 2"]])
-            
+
             if b.team not in todays_teams.values:
                 print("Invalid team:", b)
                 return False
@@ -59,7 +55,7 @@ class Simulation:
         # Get today's date
         today_date = datetime.today().strftime('%Y-%m-%d')
         # File name for storing bets
-        bets_file_name = f"../__data__/bets_{today_date}.xlsx"
+        bets_file_name = f"../__data__/bets_.xlsx"
 
         # Iterate through algorithm files, create objects, and store list of bets
         for algo_file in self.algorithm_files:
@@ -96,7 +92,6 @@ class Simulation:
 
         print(f"All valid bets stored in {bets_file_name}")
         return final_bets
-        
 
     def computeResults(self):
         # Get today's actual results from Excel file

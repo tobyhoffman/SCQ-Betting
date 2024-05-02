@@ -1,9 +1,8 @@
 from simulation import Simulation
 from data import *
 
-# scrapeNBAOdds()
 
-algorithm_files = ["team2_algorithm.py"]
+algorithm_files = ["my_algorithm.py"]
 
 simulation_file = "../__data__/test_sim.xlsx"
 

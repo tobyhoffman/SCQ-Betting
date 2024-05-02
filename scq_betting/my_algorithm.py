@@ -28,4 +28,5 @@ class Algorithm:
                   and defensiveRating(team2) > defensiveRating(team1)):
                 bets.append(Bet(team2, 2)) #bet a fixed wager of 2 units on team2
 
+
         return bets  # return the bets that your strategy determines
