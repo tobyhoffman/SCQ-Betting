@@ -1,5 +1,8 @@
 # SCQ-Betting
 
+Instructions for creating and submitting algorithms can be found here:
+https://docs.google.com/document/d/18oVEIx5R0XeHHgWJrEOVSszFY9lqM2T9qKsP2rrAaBo/edit?usp=sharing
+
 Stats used for this project have been imported directly from the table linked:
 https://stathead.com/tiny/i2XKf
 
