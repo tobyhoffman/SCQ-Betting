@@ -191,18 +191,21 @@ def getTodaysGames():
         # If the file does not exist, call scrapeNBAOdds()
         print(f"Excel file {file_name} not found. Need to scrape NBA odds")
 
-def getYesterdayResults():     
+def getResults(date):     
     export_data = []
 
     # chrome_options = Options()
     # chrome_options.add_argument("--disable-gpu")
-    s = Service('/usr/local/bin/chromedriver') 
+    # s = Service('/usr/local/bin/chromedriver') 
 
-    driver = webdriver.Chrome(service=s)
-    url = 'https://sports.yahoo.com/nba/scoreboard/?confId=&schedState=2&dateRange=2014-02-10'
+    # driver = webdriver.Chrome(service=s)
+    options = Options()
+    options.add_argument("--headless=new")
+    driver = webdriver.Chrome(options=options)
+    url = 'https://sports.yahoo.com/nba/scoreboard/?confId=&schedState=2&dateRange=' + date
     driver.get(url)
 
-    table = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, "[id*=scoreboard-group-2]")))
+    table = driver.find_element(By.CSS_SELECTOR, "[id*=scoreboard-group-2]")
     all_lists = table.find_elements(By.TAG_NAME, "ul")
 
     if(len(all_lists) == 0):
@@ -234,6 +237,11 @@ def getYesterdayResults():
 
     columns = ["Team 1 First", "Team 1 Last", "Team 1 Score", "Team 2 First", "Team 2 Last", "Team 2 Score"]
     df = pd.DataFrame(export_data, columns=columns)
+
+    
+    file_name = f"../__data__/results_data_{date}.xlsx"
+    df.to_excel(file_name, index=False)
+    print(f"Data exported to {file_name}")
 
     return df
         
