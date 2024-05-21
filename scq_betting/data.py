@@ -1,5 +1,5 @@
 from datetime import datetime
-
+import os
 import pandas as pd
 
 from game import Game
@@ -12,9 +12,11 @@ mastertable = pd.read_html(masterUrl)[0]
 
 # parse tables from html - stored as var
 
-mastertable.to_excel("../__data__/MasterStats.xlsx")
-mastertable = pd.read_excel("../__data__/MasterStats.xlsx", header=1)
-mastertable.to_excel("../__data__/MasterStats.xlsx")
+# print("Current Working Directory: ", os.getcwd())
+
+mastertable.to_excel("./__data__/MasterStats.xlsx")
+mastertable = pd.read_excel("./__data__/MasterStats.xlsx", header=1)
+mastertable.to_excel("./__data__/MasterStats.xlsx")
 
 # Store the teams stats in Excel file
 
@@ -120,7 +122,7 @@ def pace(team):
     return (pacetable["Pace"]).iloc[row_index[0]]
 def getTodaysGames():
 
-    file_name = f"../__data__/betting_data.xlsx"
+    file_name = f"./__data__/betting_data.xlsx"
 
     try:
         # Check if the Excel file exists

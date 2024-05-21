@@ -4,7 +4,7 @@ from data import *
 
 algorithm_files = ["my_algorithm.py"]
 
-simulation_file = "../__data__/test_sim.xlsx"
+simulation_file = "./__data__/test_sim.xlsx"
 
 # Create a Simulation object
 s = Simulation(algorithm_files, simulation_file, 10)

@@ -35,7 +35,7 @@ class Simulation:
             return False
 
         today_date = datetime.today().strftime('%Y-%m-%d')
-        data_file = f"../__data__/betting_data.xlsx"
+        data_file = f"./__data__/betting_data.xlsx"
 
         try:
             df = pd.read_excel(data_file)
@@ -55,7 +55,7 @@ class Simulation:
         # Get today's date
         today_date = datetime.today().strftime('%Y-%m-%d')
         # File name for storing bets
-        bets_file_name = f"../__data__/bets_.xlsx"
+        bets_file_name = "./__data__/bets_.xlsx"
 
         # Iterate through algorithm files, create objects, and store list of bets
         for algo_file in self.algorithm_files:
